@@ -6,8 +6,8 @@ def get_player_pos() -> None:
     good_coords: list[float] = []
     if input_user == "" and len(good_coords) == 0:
         input_user = input(
-            "Enter new coordinates as \
-                           floats in format 'x,y,z':"
+            ("Enter new coordinates as"
+             "floats in format 'x,y,z':")
         )
     while len(good_coords) == 0:
         try:
@@ -35,7 +35,8 @@ def get_player_pos() -> None:
             elif len(good_coords) == 3:
                 coords: tuple[float, ...] = tuple(good_coords)
                 print("Got a first tuple :", coords)
-                print(f"it includes: X={coords[0]}, Y={coords[1]}, Z={coords[2]}")
+                print(f"it includes: X={coords[0]},"
+                      f"Y={coords[1]}, Z={coords[2]}")
                 distance: float = math.sqrt(
                     coords[0] ** 2 + coords[1] ** 2 + coords[2] ** 2
                 )

@@ -1,6 +1,5 @@
-from operator import ne
 import random
-from typing import Dict, List, Set, Any
+from typing import Dict, List, Set
 
 
 class AdvancedDataHelper:
@@ -62,7 +61,8 @@ class AdvancedDataHelper:
             "map",
         ]
 
-    def gen_player_achievements(self, player_count: int = 20) -> Dict[str, Set[str]]:
+    def gen_player_achievements(self,
+                                player_count: int = 20) -> Dict[str, Set[str]]:
         """Generate complex achievement networks with dependencies."""
         network: Dict[str, Set[str]] = {}
 
@@ -111,19 +111,22 @@ def achieve_player(network: Dict[str, Set[str]]) -> Dict[str, Set[str]]:
     for main_player in network.keys():
         for player in network.keys():
             if player != main_player:
-                inter: Set[str] = network[main_player].intersection(network[player])
+                inter: Set[str] = network[main_player].\
+                    intersection(network[player])
                 common_with_other = common_with_other.union(inter)
         res[main_player] = network[main_player].difference(common_with_other)
     return res
 
 
-def missing_achieve_player(network: Dict[str, Set[str]]) -> Dict[str, Set[str]]:
+def missing_achieve_player(network:
+                           Dict[str, Set[str]]) -> Dict[str, Set[str]]:
     res: Dict[str, Set[str]] = {}
     common_with_other: Set[str] = set()
     for main_player in network.keys():
         for player in network.keys():
             if player != main_player:
-                inter: Set[str] = network[main_player].intersection(network[player])
+                inter: Set[str] = network[main_player].\
+                    intersection(network[player])
                 common_with_other = common_with_other.union(inter)
         res[main_player] = common_with_other.difference(network[main_player])
     return res

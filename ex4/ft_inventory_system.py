@@ -5,10 +5,12 @@ from typing import Dict
 def main() -> None:
     print("=== Inventory System Analysis ===\n")
     if len(sys.argv) < 2:
-        print("Example usage : python3 ft_inventory_system.py \
-              sword:1 potion:5 \
-              shield:2 armor:3 \
-              helmet:1 sword:2 hello key:value")
+        print(
+            ("Example usage : python3 ft_inventory_system.py"
+             "sword:1 potion:5 "
+             "shield:2 armor:3 "
+             "helmet:1 sword:2 hello key:value")
+        )
         return None
     list_items: list[str] = list()
     total: int = 0
@@ -43,23 +45,24 @@ def main() -> None:
         else:
             print(f"Got inventory : {inventory}")
             print(f"Item list: {list_items}")
-            print(f"Total quantity of the {len(list_items)} :"
-                  f"items :{list_items} : {total}")
-            mini_key = list(inventory.keys())[0]
-            maxi_key =  list(inventory.keys())[0]
-            mini_value = inventory[mini_key]
-            maxi_value = inventory[mini_key]
+            print(
+                f"Total quantity of the {len(list_items)} :"
+                f"items :{list_items} : {total}"
+            )
+            mini_key: str = list(inventory.keys())[0]
+            maxi_key: str = list(inventory.keys())[0]
+            mini_value: int = inventory[mini_key]
+            maxi_value: int = inventory[mini_key]
             for k, v in inventory.items():
-                print(f"Item {k} represents {round(v/total * 100, 2)}%")
+                print(f"Item {k} represents {round(v / total * 100, 2)}%")
                 if v < mini_value:
-                    mini_value: int = v
-                    mini_key: str = k
+                    mini_value = v
+                    mini_key = k
                 if v > maxi_value:
-                    maxi_value: int = v
-                    maxi_key: str = k
+                    maxi_value = v
+                    maxi_key = k
             print(f"Item most abundant: {maxi_key} with quantity {maxi_value}")
-            print(f"Item least abundant: {mini_key}"
-                  f"with quantity {mini_value}")
+            print(f"Item least abundant: {mini_key}with quantity {mini_value}")
             inventory.update({"magic_item": 1})
             print(f"Updated inventory: {inventory}")
     except Exception as e:
