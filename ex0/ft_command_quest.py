@@ -1,9 +1,9 @@
 import sys
 
 
-def main():
+def main() -> None:
     print(f"Program name: {sys.argv[0]}")
-    arguments = sys.argv[1:]
+    arguments: list[str] = sys.argv[1:]
     if arguments:
         print(f"Arguments received: {len(sys.argv[1:])}")
         for i, param in enumerate(arguments):
